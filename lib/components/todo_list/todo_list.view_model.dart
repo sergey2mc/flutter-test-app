@@ -5,11 +5,13 @@ import '../../models/todo.model.dart';
 class TodoListViewModel extends Vm {
   final List<Todo> todos;
   final void Function(int, String) onSaveTodo;
+  final void Function(int) onEditTodo;
   final void Function(int) onDeleteTodo;
 
   TodoListViewModel({
     required this.todos,
     required this.onSaveTodo,
+    required this.onEditTodo,
     required this.onDeleteTodo,
   }) : super(equals: [todos]);
 }

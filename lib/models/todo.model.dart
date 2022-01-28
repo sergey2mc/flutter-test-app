@@ -6,4 +6,9 @@ class Todo {
     this.text = '',
     this.editMode = false
   });
+
+  Todo edit() {
+    editMode = true;
+    return this;
+  }
 }

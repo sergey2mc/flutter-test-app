@@ -39,6 +39,27 @@ class SaveTodoAction extends ReduxAction<AppState> {
   }
 }
 
+class EditTodoAction extends ReduxAction<AppState> {
+  final int index;
+
+  EditTodoAction({ required this.index });
+
+  @override
+  AppState reduce() {
+    return state.copy(
+      todoState: state.todoState.copy(
+        todos: state.todoState.todos
+          .map((Todo t) =>
+            state.todoState.todos.indexOf(t) == index
+              ? t.edit()
+              : t
+          )
+          .toList()
+      ),
+    );
+  }
+}
+
 class DeleteTodoAction extends ReduxAction<AppState> {
   final int index;
 

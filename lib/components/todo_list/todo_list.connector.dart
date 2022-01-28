@@ -16,6 +16,7 @@ class TodoListConnector extends StatelessWidget {
       builder: (BuildContext context, TodoListViewModel vm) => TodoList(
         todos: vm.todos,
         onSaveTodo: vm.onSaveTodo,
+        onEditTodo: vm.onEditTodo,
         onDeleteTodo: vm.onDeleteTodo,
       ),
     );

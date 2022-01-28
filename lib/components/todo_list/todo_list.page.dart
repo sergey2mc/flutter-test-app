@@ -5,12 +5,14 @@ import '../../models/todo.model.dart';
 class TodoList extends StatefulWidget {
   final List<Todo>? todos;
   final void Function(int, String)? onSaveTodo;
+  final void Function(int)? onEditTodo;
   final void Function(int)? onDeleteTodo;
 
   const TodoList({
     Key? key,
     this.todos,
     this.onSaveTodo,
+    this.onEditTodo,
     this.onDeleteTodo,
   }) : super(key: key);
 
@@ -63,16 +65,29 @@ class _TodoListState extends State<TodoList> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(todo.text),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(
-                            fontSize: 20
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          IconButton(
+                            iconSize: 20,
+                            icon: const Icon(Icons.edit),
+                            color: const Color.fromRGBO(0, 130, 255, 1),
+                            tooltip: 'Edit ToDo',
+                            onPressed: () {
+                              _controller.text = todo.text;
+                              widget.onEditTodo!(widget.todos!.indexOf(todo));
+                            }
+                          ),
+                          IconButton(
+                            iconSize: 20,
+                            icon: const Icon(Icons.delete),
+                            color: const Color.fromRGBO(255, 0, 0, 1),
+                            tooltip: 'Delete ToDo',
+                            onPressed: () => widget.onDeleteTodo!(widget.todos!.indexOf(todo)),
                           )
-                        ),
-                        onPressed: () => widget.onDeleteTodo!(widget.todos!.indexOf(todo)),
-                        child: const Text('Delete'),
-                      ),
-                    ],
+                        ]
+                      )
+                    ]
                   )
                 )
           )

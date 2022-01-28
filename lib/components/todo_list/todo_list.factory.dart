@@ -17,6 +17,9 @@ class TodoListFactory extends VmFactory<AppState, TodoListConnector> {
         text: text
       )
     ),
+    onEditTodo: (int index) => dispatch(
+      EditTodoAction(index: index)
+    ),
     onDeleteTodo: (int index) => dispatch(
       DeleteTodoAction(index: index)
     ),
