@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../shared/components/header.component.dart';
 import '../../shared/components/nav.component.dart';
+import 'components/auth_form.component.dart';
 
 class AuthPage extends StatelessWidget {
-  final Function(String email, String password) onLogIn;
+  final void Function(String email, String password) onLogIn;
 
   const AuthPage({
     Key? key,
@@ -41,17 +42,12 @@ class AuthPage extends StatelessWidget {
               margin: const EdgeInsets.only(
                 bottom: 10
               ),
-              child: const Text(
-                'Log In Page',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color.fromRGBO(0, 0, 255, 1),
-                  fontWeight: FontWeight.normal,
-                  fontSize: 18
+              child: Center(
+                child: AuthForm(
+                  onLogIn: onLogIn
                 )
               )
-            ),
-
+            )
           ]
         ),
       )

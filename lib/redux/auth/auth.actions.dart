@@ -20,6 +20,11 @@ class LogInAction extends ReduxAction<AppState> {
       ),
     );
   }
+
+  @override
+  void after() {
+    dispatch(NavigateAction.pushNamed('/'));
+  }
 }
 
 class LogOutAction extends ReduxAction<AppState> {
