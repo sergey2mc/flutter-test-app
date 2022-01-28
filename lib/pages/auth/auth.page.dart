@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../components/todo_list/todo_list.connector.dart';
 import '../../shared/components/header.component.dart';
-import '../../shared/components/nav.component.dart';
 
-class HomePage extends StatelessWidget {
-  final VoidCallback onAddTodo;
+class AuthPage extends StatelessWidget {
+  final Function(String email, String password) onLogIn;
 
-  const HomePage({
+  const AuthPage({
     Key? key,
-    required this.onAddTodo,
+    required this.onLogIn,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: header('Todo app'),
-      drawer: nav(context),
       body: Container(
         padding: const EdgeInsets.all(10.0),
         margin: const EdgeInsets.all(10.0),
@@ -29,7 +26,7 @@ class HomePage extends StatelessWidget {
                 bottom: 10
               ),
               child: const Text(
-                'Title',
+                'Auth',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(0, 0, 255, 1),
@@ -43,7 +40,7 @@ class HomePage extends StatelessWidget {
                 bottom: 10
               ),
               child: const Text(
-                'Subtitle',
+                'Log In Page',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(0, 0, 255, 1),
@@ -52,21 +49,7 @@ class HomePage extends StatelessWidget {
                 )
               )
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    textStyle: const TextStyle(
-                      fontSize: 20
-                    )
-                  ),
-                  onPressed: () => onAddTodo(),
-                  child: const Text('Add todo'),
-                )
-              ]
-            ),
-            const TodoListConnector()
+
           ]
         ),
       )

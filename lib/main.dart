@@ -2,6 +2,7 @@ import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/pages/home/home.connector.dart';
 
+import 'pages/auth/auth.connector.dart';
 import 'pages/home/home.connector.dart';
 import 'redux/app.state.dart';
 
@@ -27,6 +28,7 @@ class App extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const HomePageConnector(),
+        '/auth': (context) => const AuthPageConnector(),
       },
     )
   );
