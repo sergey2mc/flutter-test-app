@@ -31,4 +31,9 @@ class LogOutAction extends ReduxAction<AppState> {
       ),
     );
   }
+
+  @override
+  void after() {
+    dispatch(NavigateAction.pushNamed('/auth'));
+  }
 }

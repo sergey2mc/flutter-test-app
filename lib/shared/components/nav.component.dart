@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:async_redux/async_redux.dart';
+
+import '../../redux/app.state.dart';
+import '../../redux/auth/auth.actions.dart';
 
 Drawer nav(BuildContext context) {
   return Drawer(
@@ -39,10 +43,7 @@ Drawer nav(BuildContext context) {
               const Divider(),
               ListTile(
                 title: const Text('Log Out'),
-                onTap: () {
-
-                  Navigator.pop(context);
-                }
+                onTap: () => StoreProvider.dispatch<AppState>(context, LogOutAction())
               )
             ]
           )

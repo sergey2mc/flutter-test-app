@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/components/header.component.dart';
+import '../../shared/components/nav.component.dart';
 
 class AuthPage extends StatelessWidget {
   final Function(String email, String password) onLogIn;
@@ -13,7 +14,8 @@ class AuthPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: header('Todo app'),
+      appBar: header('Auth'),
+      drawer: nav(context),
       body: Container(
         padding: const EdgeInsets.all(10.0),
         margin: const EdgeInsets.all(10.0),
@@ -26,7 +28,7 @@ class AuthPage extends StatelessWidget {
                 bottom: 10
               ),
               child: const Text(
-                'Auth',
+                'Sign In',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color.fromRGBO(0, 0, 255, 1),
