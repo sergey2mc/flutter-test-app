@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../components/todo_list/todo_list.connector.dart';
+import '../../shared/components/header.component.dart';
 
 class HomePage extends StatelessWidget {
   final VoidCallback onAddTodo;
@@ -13,17 +14,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Todos App')),
+      appBar: header('Todo app'),
       body: Container(
-        margin: const EdgeInsets.all(10.0),
         padding: const EdgeInsets.all(10.0),
+        margin: const EdgeInsets.all(10.0),
         alignment: Alignment.center,
         color: Colors.red[600],
         child: Column(
           children: [
             Container(
               margin: const EdgeInsets.only(
-                bottom: 10.0
+                bottom: 10
               ),
               child: const Text(
                 'Title',
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget {
             ),
             Container(
               margin: const EdgeInsets.only(
-                bottom: 10.0
+                bottom: 10
               ),
               child: const Text(
                 'Subtitle',
@@ -60,8 +61,8 @@ class HomePage extends StatelessWidget {
                   ),
                   onPressed: () => onAddTodo(),
                   child: const Text('Add todo'),
-                ),
-              ],
+                )
+              ]
             ),
             const TodoListConnector()
           ]
