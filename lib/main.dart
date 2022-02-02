@@ -1,25 +1,40 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 
+import 'core/guards/auth.guard.dart';
 import 'core/router/app.router.gr.dart';
 import 'redux/app.state.dart';
 
-late Store<AppState> store;
+final GetIt getIt = GetIt.instance;
 
 void main() {
   var state = AppState.initialState();
-  store = Store<AppState>(initialState: state);
+
+  getIt.registerSingleton<AppRouter>(
+    AppRouter(
+      authGuard: AuthGuard(),
+    )
+  );
+
+  getIt.registerSingleton<Store<AppState>>(
+    Store<AppState>(
+      initialState: state
+    )
+  );
+
   runApp(App());
 }
 
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
 
-  final _appRouter = AppRouter();
+  final _appRouter = getIt<AppRouter>();
+  final _store = getIt<Store<AppState>>();
 
   @override
   Widget build(BuildContext context) => StoreProvider<AppState>(
-    store: store,
+    store: _store,
     child: MaterialApp.router(
       title: 'Test Flutter App',
       theme: ThemeData(

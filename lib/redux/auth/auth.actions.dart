@@ -28,7 +28,7 @@ class LogInAction extends ReduxAction<AppState> {
 
   @override
   void after() async {
-    await context.router.push(const HomePageConnectorRoute());
+    await context.router.push(const HomePageRoute());
   }
 }
 
@@ -50,6 +50,6 @@ class LogOutAction extends ReduxAction<AppState> {
 
   @override
   void after() async {
-    await context.router.push(const AuthPageConnectorRoute());
+    await context.router.push(const AuthPageRoute());
   }
 }

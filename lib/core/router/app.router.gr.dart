@@ -17,37 +17,42 @@ import '../../pages/auth/auth.connector.dart' as _i1;
 import '../../pages/home/home.connector.dart' as _i2;
 import '../../pages/page-1/page-1.page.dart' as _i3;
 import '../../pages/page-2/page-2.page.dart' as _i4;
+import '../guards/auth.guard.dart' as _i7;
 
 class AppRouter extends _i5.RootStackRouter {
-  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
+  AppRouter(
+      {_i6.GlobalKey<_i6.NavigatorState>? navigatorKey,
+      required this.authGuard})
       : super(navigatorKey);
+
+  final _i7.AuthGuard authGuard;
 
   @override
   final Map<String, _i5.PageFactory> pagesMap = {
-    AuthPageConnectorRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+    AuthPageRoute.name: (routeData) {
+      return _i5.MaterialPageX<bool>(
           routeData: routeData, child: const _i1.AuthPageConnector());
     },
-    HomePageConnectorRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+    HomePageRoute.name: (routeData) {
+      return _i5.MaterialPageX<bool>(
           routeData: routeData, child: const _i2.HomePageConnector());
     },
     Page1Route.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<bool>(
           routeData: routeData, child: const _i3.Page1());
     },
     Page2Route.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i5.MaterialPageX<bool>(
           routeData: routeData, child: const _i4.Page2());
     }
   };
 
   @override
   List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(AuthPageConnectorRoute.name, path: '/auth'),
-        _i5.RouteConfig(HomePageConnectorRoute.name, path: '/'),
-        _i5.RouteConfig(Page1Route.name, path: '/page-1'),
-        _i5.RouteConfig(Page2Route.name, path: '/page-2'),
+        _i5.RouteConfig(AuthPageRoute.name, path: '/auth'),
+        _i5.RouteConfig(HomePageRoute.name, path: '/', guards: [authGuard]),
+        _i5.RouteConfig(Page1Route.name, path: 'page-1', guards: [authGuard]),
+        _i5.RouteConfig(Page2Route.name, path: 'page-2', guards: [authGuard]),
         _i5.RouteConfig('*#redirect',
             path: '*', redirectTo: '/', fullMatch: true)
       ];
@@ -55,26 +60,24 @@ class AppRouter extends _i5.RootStackRouter {
 
 /// generated route for
 /// [_i1.AuthPageConnector]
-class AuthPageConnectorRoute extends _i5.PageRouteInfo<void> {
-  const AuthPageConnectorRoute()
-      : super(AuthPageConnectorRoute.name, path: '/auth');
+class AuthPageRoute extends _i5.PageRouteInfo<void> {
+  const AuthPageRoute() : super(AuthPageRoute.name, path: '/auth');
 
-  static const String name = 'AuthPageConnectorRoute';
+  static const String name = 'AuthPageRoute';
 }
 
 /// generated route for
 /// [_i2.HomePageConnector]
-class HomePageConnectorRoute extends _i5.PageRouteInfo<void> {
-  const HomePageConnectorRoute()
-      : super(HomePageConnectorRoute.name, path: '/');
+class HomePageRoute extends _i5.PageRouteInfo<void> {
+  const HomePageRoute() : super(HomePageRoute.name, path: '/');
 
-  static const String name = 'HomePageConnectorRoute';
+  static const String name = 'HomePageRoute';
 }
 
 /// generated route for
 /// [_i3.Page1]
 class Page1Route extends _i5.PageRouteInfo<void> {
-  const Page1Route() : super(Page1Route.name, path: '/page-1');
+  const Page1Route() : super(Page1Route.name, path: 'page-1');
 
   static const String name = 'Page1Route';
 }
@@ -82,7 +85,7 @@ class Page1Route extends _i5.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.Page2]
 class Page2Route extends _i5.PageRouteInfo<void> {
-  const Page2Route() : super(Page2Route.name, path: '/page-2');
+  const Page2Route() : super(Page2Route.name, path: 'page-2');
 
   static const String name = 'Page2Route';
 }
