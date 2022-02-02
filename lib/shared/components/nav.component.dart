@@ -20,16 +20,16 @@ Drawer nav(BuildContext context) {
                 child: Text('Nav Header')
               ),
               ListTile(
-                title: const Text('Item 1'),
-                onTap: () {
-
+                title: const Text('Page 1'),
+                onTap: () async {
+                  await Navigator.pushNamed(context, '/page-1');
                   Navigator.pop(context);
                 }
               ),
               ListTile(
-                title: const Text('Item 2'),
-                onTap: () {
-
+                title: const Text('Page 2'),
+                onTap: () async {
+                  await Navigator.pushNamed(context, '/page-2');
                   Navigator.pop(context);
                 }
               )

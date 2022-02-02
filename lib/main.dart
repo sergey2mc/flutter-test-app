@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'pages/auth/auth.connector.dart';
 import 'pages/home/home.connector.dart';
+import 'pages/page-1/page-1.page.dart';
+import 'pages/page-2/page-2.page.dart';
 import 'redux/app.state.dart';
 
 final navigatorKey = GlobalKey<NavigatorState>();
@@ -31,6 +33,8 @@ class App extends StatelessWidget {
       routes: {
         '/': (context) => const HomePageConnector(),
         '/auth': (context) => const AuthPageConnector(),
+        '/page-1': (context) => const Page1(),
+        '/page-2': (context) => const Page2(),
       },
     )
   );
