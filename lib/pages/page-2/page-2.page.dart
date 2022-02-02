@@ -11,8 +11,18 @@ class Page2 extends StatelessWidget {
     return Scaffold(
       appBar: header('Page 2'),
       drawer: nav(context),
-      body: const Center(
-        child: Text('Page 2 content'),
+      body: Center(
+        child: Column(
+          children: const [
+            Text('Page 2 content'),
+            Image(
+              image: AssetImage('images/page-2-img.jpeg'),
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            )
+          ]
+        )
       )
     );
   }

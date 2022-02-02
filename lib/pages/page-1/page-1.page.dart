@@ -11,9 +11,17 @@ class Page1 extends StatelessWidget {
     return Scaffold(
       appBar: header('Page 1'),
       drawer: nav(context),
-      body: const Center(
-        child: Text('Page 1 content'),
-      )
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/page-1-bg.jpeg'),
+            fit: BoxFit.cover,
+          )
+        ),
+        child: const Center(
+          child: Text('Page 1 content'),
+        ),
+      ),
     );
   }
 }
