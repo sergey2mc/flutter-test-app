@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
-  final void Function(String email, String password)? onLogIn;
+  final void Function(
+    String email,
+    String password,
+    BuildContext context
+  )? onLogIn;
 
   const AuthForm({
     Key? key,
@@ -65,6 +69,7 @@ class _AuthFormState extends State<AuthForm> {
                   return widget.onLogIn!(
                     _emailController.text,
                     _passwordController.text,
+                    context,
                   );
                 }
 

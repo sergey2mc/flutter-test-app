@@ -1,4 +1,5 @@
 import 'package:async_redux/async_redux.dart';
+import 'package:flutter/cupertino.dart';
 
 import '../../redux/auth/auth.actions.dart';
 import '../../redux/app.state.dart';
@@ -10,10 +11,11 @@ class AuthPageFactory extends VmFactory<AppState, AuthPageConnector> {
 
   @override
   AuthPageViewModel fromStore() => AuthPageViewModel(
-    onLogIn: (String email, String password) => dispatch(
+    onLogIn: (String email, String password, BuildContext context) => dispatch(
       LogInAction(
         email: email,
-        password: password
+        password: password,
+        context: context,
       )
     ),
   );

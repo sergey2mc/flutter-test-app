@@ -5,7 +5,11 @@ import '../../shared/components/nav.component.dart';
 import 'components/auth_form.component.dart';
 
 class AuthPage extends StatelessWidget {
-  final void Function(String email, String password) onLogIn;
+  final void Function(
+    String email,
+    String password,
+    BuildContext context
+  ) onLogIn;
 
   const AuthPage({
     Key? key,
